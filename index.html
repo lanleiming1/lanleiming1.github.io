@@ -60,10 +60,9 @@
     </div>
    <script src="jquery.js" type="text/javascript"></script>
    <script type="text/javascript">   	
-    $(function(){
+      $(function(){
 	   getTotalPV();
-    	
-    });
+	});
 	function getTotalPV()
 	{
 		$.ajax({  
@@ -72,10 +71,23 @@
 			data:'',  
 			jsonp:'callback',  
 			success:function(result) {  
-			   alert(result.results[0].totalPV);
+			   $('#lb_count').val(result.results[0].totalPV));
+			   //更新次数
+			   setTotalPV();
+			}      
+		}); 	
+	}	
+	function setTotalPV()
+	{
+	  $.ajax({  
+			url:"http://cloud.bmob.cn/1cf19cbebb0bdf1a/setTotalPV",  
+			dataType:'jsonp',  
+			data:'',  
+			jsonp:'callback',  
+			success:function(result) {  			  
 			}      
 		}); 
-	}	
+	}
 </script>
   </body>
 </html>
